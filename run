@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# DO NOT EDIT. Serves your bot on http://127.0.0.1:8700. Set COGIX_AGENT_TOKEN first.
+set -euo pipefail
+cd "$(dirname "$0")"
+if [ -z "${COGIX_AGENT_TOKEN:-}" ]; then echo "Set COGIX_AGENT_TOKEN first (see README.md)."; exit 1; fi
+if [ ! -x .venv/bin/python ]; then python3 -m venv .venv && .venv/bin/pip install -q ./sdk; fi
+exec .venv/bin/python main.py
